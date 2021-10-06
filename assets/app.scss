@@ -12,20 +12,6 @@ $pageWidth: 500pt;
 $gap: 32pt;
 $gapHalf: 16pt;
 
-/* Fonts */
-@font-face {
-  font-family: 'Noto Serif SC';
-  font-style: normal;
-  font-weight: 400;
-  src: url(fonts/noto-serif-sc.woff2) format('woff2'), url(fonts/noto-serif-sc.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Source Serif Pro';
-  font-style: normal;
-  -webkit-font-smoothing: subpixel-antialiased;
-  src: url('/fonts/source-serif-pro.woff2') format('woff2'), url('/fonts/source-serif-pro.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
 /* Supports */
 @supports (bottom: constant(safe-area-inset-bottom)) {
   :root {
