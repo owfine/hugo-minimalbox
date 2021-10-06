@@ -125,7 +125,13 @@ nav.top {
     height: 48px;
     overflow: hidden;
     background: $primary;
-
+    transition: width 0.4s cubic-bezier(0.74, 0.12, 0.24, 1.38);
+    &:hover {
+      width: 190pt;
+      .logo {
+        background-position-x: 20px;
+      }
+    }
     .logo {
       border: 0;
       display: block;
@@ -135,14 +141,15 @@ nav.top {
       background-size: 1.5rem;
       background-position-x: 10px;
       background-position-y: center;
+      transition: background-position-x 0.6s cubic-bezier(0.74, 0.12, 0.24, 1.38);
     }
     .alt {
-      font-family: 'STSong', 'SimSun', 'Times New Roman', Times, serif;
       margin-left: 35pt;
       color: #fff;
       font-size: 1.2em;
       line-height: 2;
       font-weight: normal;
+      font-family: 'STSong', 'SimSun', 'Times New Roman', Times, serif;
     }
     &.fixed {
       position: fixed;
@@ -351,18 +358,3 @@ footer {
   font-size: 1.1rem;
 }
 
-/* Media */
-@media screen and (min-width: 660px) {
-  nav.top .logo-wrapper {
-    transition: width 0.4s cubic-bezier(0.74, 0.12, 0.24, 1.38);
-  }
-  nav.top .logo-wrapper .logo {
-    transition: all 0.6s cubic-bezier(0.74, 0.12, 0.24, 1.38);
-  }
-  nav.top .logo-wrapper:hover {
-    width: 190pt;
-  }
-  nav.top .logo-wrapper:hover .logo {
-    background-position-x: 20px;
-  }
-}
