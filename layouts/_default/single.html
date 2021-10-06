@@ -1,0 +1,43 @@
+{{ define "main" }}
+
+<article class="post">
+  <header class="post-title">
+    <!-- Cover -->
+    {{ if .Params.cover}}
+    <image src="{{ .Params.cover }}" class="cover" />
+    {{ end}}
+
+    <h1 class="title{{ with .Params.cover }} with-cover{{end}}">{{ .Title }}</h1>
+    <p class="info">
+      <time>{{ .Date | time.Format ":date_medium" }}</time>
+      {{ if or .Params.Author site.Author.name }}
+      <span>· {{ .Params.Author | default site.Author.name }}</span>
+      {{ end }}
+    </p>
+  </header>
+  <section class="post-content">{{ .Content }}</section>
+
+  <!-- Post Tags -->
+  {{ if .Params.tags }}
+  <footer class="post-tags">
+    {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
+    <a href="{{ $href }}">{{ . }}</a>
+    {{ end }}
+  </footer>
+  {{ end }}
+
+
+  <!-- Disqus -->
+  {{ if and site.DisqusShortname (not (eq .Params.comments false)) }}
+  <div id="disqus_thread" class="post-comments"></div>
+  <script>
+    const disqusShortname = '{{ site.DisqusShortname }}';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  {{ end }}
+</article>
+
+{{ end }}

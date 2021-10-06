@@ -1,0 +1,22 @@
+{{- define "main" }}
+
+
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }} {{- if .Site.Params.ShowAllPagesInArchive }} {{- $pages = site.RegularPages }} {{- end }} {{- range
+$pages.GroupByPublishDate "2006" }} {{- if ne .Key "0001" }}
+<article class="archive">
+  <h2 class="year">{{- replace .Key "0001" "" }}</h2>
+  {{- range .Pages.GroupByDate "January" }}
+  <ul class="posts">
+    {{- range .Pages }} {{- if eq .Kind "page" }}
+    <li class="post">
+      <time>{{ .Date.Format "Jan. 02" }}</time>
+      <h3 class="post-title">
+        <a class="link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"> {{- .Title | markdownify }} </a>
+        <!-- {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }} -->
+      </h3>
+    </li>
+    {{- end }} {{- end }}
+  </ul>
+  {{- end }}
+</article>
+{{- end }} {{- end }} {{- end }}{{/* end main */}}

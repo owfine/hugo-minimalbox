@@ -1,0 +1,14 @@
+<header>
+  <nav class="top">
+    <div class="logo-wrap fixed">
+      <a href="/" class="logo">
+        <span class="alt">{{ .Site.Title}}</span>
+      </a>
+    </div>
+    {{ if or (.IsHome) ( .Params.page ) (ne .Kind `page` )}}
+    <h1 class="site-title">
+      <a href="/" class="link">{{ .Site.Title}}</a>
+    </h1>
+    {{ end }}
+  </nav>
+</header>

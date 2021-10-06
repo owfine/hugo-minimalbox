@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+<!-- Constant -->
+{{ $pages := union .RegularPages .Sections }} {{ if .IsHome }} {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }} {{ end }}
+
+<!-- Articles -->
+{{ $paginator := .Paginate $pages }} {{ range $index, $page := $paginator.Pages }}
+<article class="entry">
+  <time>{{ .Date | time.Format ":date_long" }}</time>
+  <h2 class="title">
+    <a href="{{ .Permalink }}" class="link"> {{ .Title }} </a>
+  </h2>
+  {{- if (ne (.Param "hideSummary") true) }}
+  <section class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}</p>
+  </section>
+  {{- end }}
+</article>
+{{ end }}
+
+<!-- Main Nav -->
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="paginator">
+  {{ if $paginator.HasPrev }}
+  <a class="prev" href="{{ $paginator.Prev.URL }}">{{ i18n "prev_page" }}</a>
+  {{ end }} {{ if $paginator.HasNext }}
+  <a class="next" href="{{ $paginator.Next.URL }}">{{ i18n "next_page" }}</a>
+  {{ end }}
+</nav>
+{{ end }} {{ end }}

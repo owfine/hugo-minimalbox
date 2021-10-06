@@ -1,0 +1,17 @@
+{{- define "main" }}
+
+<article class="term">
+  {{- if .Title }}
+  <h2 class="title">{{ .Title }} </h2>
+  {{- end }}
+  <ul class="tags">
+    {{- $type := .Type }} {{- range $key, $value := .Data.Terms.Alphabetical }} {{- $name := .Name }} {{- with $.Site.GetPage (printf "/%s/%s" $type $name)
+    }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Name }}</a>
+    </li>
+    {{- end }} {{- end }}
+  </ul>
+</article>
+
+{{- end }}{{/* end main */ -}}
