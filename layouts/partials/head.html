@@ -22,6 +22,11 @@
   <link rel="preload stylesheet" as="style" href="{{ $css.Permalink }}" />
   <link rel="preconnect" href="https://fonts.font.im" />
   <link rel="preconnect" href="https://fonts.gstatic.font.im" crossorigin />
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.2.0/styles/base16/atelier-forest-light.min.css" rel="stylesheet">  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="{{ `favicon.ico` | absURL }}" />
